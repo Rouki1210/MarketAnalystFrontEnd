@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, catchError, first, firstValueFrom, Observable, tap } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { UpdateProfileResponse, UserInfo } from '../models/user.model';
+import { Wallet } from 'ethers';
 
 declare const google: any; // For Google Identity Services
 
@@ -193,9 +194,7 @@ export class AuthService {
   }
 
     private sendCodeToBackend(code: string): void {
-    // POST to backend to exchange the code and create session
-    console.log('Sending OAuth code to backend:', code);
-    this.http.post<any>(`${this.apiUrl}/google`, { code }, { withCredentials: true })
+    this.http.post<any>(`${this.apiUrl}/google`, { code, redirectUri: environment.googleRedirectUri }, { withCredentials: true })
       .subscribe({
         next: (res: any) => {
           console.log('✅ Login success', res);
@@ -252,7 +251,7 @@ export class AuthService {
     signature: string,
     message: string
   ): Observable<any> {
-    return this.http.post(`${this.apiUrl}/wallet/login`, {walletAddress, signature,message});
+    return this.http.post(`${this.apiUrl}/wallet/login`, {WalletAddress: walletAddress, Signature: signature, Message: message});
   }
 
   async getCurrentAccount(): Promise<string | null> {
