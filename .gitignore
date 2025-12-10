@@ -45,8 +45,6 @@ Thumbs.db
 .env
 .env.local
 .env*.local
-environment.ts
-!environment.example.ts
 
 # Speckit
 .github
