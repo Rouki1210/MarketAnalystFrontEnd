@@ -1,0 +1,73 @@
+/* Header specific styles if needed */
+
+/* Settings Menu Animation */
+.settings-menu-container,
+.crypto-menu-container,
+.watchlist-dropdown-container {
+  position: relative;
+}
+
+/* Smooth dropdown animation */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDownCentered {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.settings-menu-container > div {
+  animation: slideDown 0.2s ease-out;
+}
+
+.crypto-menu-container > div {
+  animation: slideDown 0.2s ease-out;
+}
+
+.watchlist-dropdown-container > div,
+.search-container > div {
+  animation: slideDownCentered 0.2s ease-out;
+}
+
+/* Rotate animation for chevron */
+.rotate-180 {
+  transform: rotate(180deg);
+}
+
+/* Watchlist Dropdown Styles */
+.watchlist-dropdown-container .custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(156, 163, 175, 0.3) transparent;
+}
+
+.watchlist-dropdown-container .custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.watchlist-dropdown-container .custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.watchlist-dropdown-container .custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(156, 163, 175, 0.3);
+  border-radius: 3px;
+  transition: background-color 0.2s ease;
+}
+
+.watchlist-dropdown-container .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(156, 163, 175, 0.5);
+}
